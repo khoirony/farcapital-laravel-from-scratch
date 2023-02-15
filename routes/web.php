@@ -37,12 +37,8 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 //     ]);
 // })->name('categories');
 
-Route::get('/author/{author:username}', function (User $author) {
-    DB::listen(function ($query){
-        logger($query->sql);
-    });
-    
-    return view('posts', [
-        'posts' => $author->posts
-    ]);
-})->name('author');
+// Route::get('/authors/{author:username}', function (User $author) {  
+//     return view('posts.index', [
+//         'posts' => $author->posts
+//     ]);
+// })->name('author');
