@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\PostController;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 // ->where('post', '[0-9]+');
 // ->where('post', '[0-9A-z_\-]+');
@@ -42,3 +38,8 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 //         'posts' => $author->posts
 //     ]);
 // })->name('author');
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register-form');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register-store');
+Route::get('/login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest')->name('create-sessions');
+Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('logout');
