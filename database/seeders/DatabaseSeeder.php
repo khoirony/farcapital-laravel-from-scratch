@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,14 +21,16 @@ class DatabaseSeeder extends Seeder
         // $user = User::factory(5)->create();
         // $category = Category::factory(5)->create();
 
-        $user = User::factory()->create([
-            'username' => 'johndoe',
-            'name' => 'John Doe'
-        ]);
+        // $user = User::factory()->create([
+        //     'username' => 'johndoe',
+        //     'name' => 'John Doe'
+        // ]);
 
-        $post = Post::factory(15)->create([
-            'user_id' => $user->id
-        ]);
+        // $post = Post::factory(15)->create([
+        //     'user_id' => $user->id
+        // ]);
+
+        Comment::factory(25)->create();
 
         // $personal = Category::create([
         //     'name' => 'Personal',
