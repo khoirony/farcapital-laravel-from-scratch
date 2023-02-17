@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::post('/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('store-comment');
 
+Route::post('newsletter', NewsletterController::class);
 
 // ->where('post', '[0-9]+');
 // ->where('post', '[0-9A-z_\-]+');
