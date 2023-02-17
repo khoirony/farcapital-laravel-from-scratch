@@ -25,6 +25,9 @@ use App\Http\Controllers\PostCommentController;
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
+Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware('admin')->name('admin');
+Route::post('/admin/posts', [PostController::class, 'store'])->middleware('admin')->name('admin');
+
 Route::post('/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('store-comment');
 
 Route::post('newsletter', NewsletterController::class);
